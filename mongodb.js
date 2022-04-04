@@ -1,10 +1,12 @@
 const mongoDB = require("mongodb");
 const { MongoClient, ObjectId } = mongoDB;
 
+// connection url from mongo db
 const connURL =
   "mongodb+srv://mongoAdmin:mongoAdmin@cluster0.baz2h.mongodb.net/task-manager?retryWrites=true&w=majority";
 const dbName = "task-manager";
 
+// connection to mongoDB
 MongoClient.connect(connURL, (error, client) => {
   if (error) {
     return console.log("Unable to connect to db");
@@ -14,50 +16,50 @@ MongoClient.connect(connURL, (error, client) => {
   console.log("Connected to db ...........");
 
   // ------------ CREATE --------------//
-  // db.collection("users").insertMany(
-  //   [
-  //     {
-  //       name: "Jimmy",
-  //       age: 32,
-  //     },
-  //     {
-  //       name: "Paul",
-  //       age: 12,
-  //     },
-  //     {
-  //       name: "Jolly",
-  //       age: 23,
-  //     },
-  //   ],
-  //   (error, result) => {
-  //     if (error) console.log("Unable to Insert documents");
-  //     console.log(result);
-  //   }
-  // );
+  db.collection("users").insertMany(
+    [
+      {
+        name: "Daisy",
+        age: 25,
+      },
+      {
+        name: "Angel",
+        age: 24,
+      },
+      {
+        name: "Ella",
+        age: 24,
+      },
+    ],
+    (error, result) => {
+      if (error) console.log("Unable to Insert documents");
+      console.log(result);
+    }
+  );
 
-  // db.collection("tasks").insertMany(
-  //   [
-  //     {
-  //       description: "Clean the house",
-  //       completed: true,
-  //     },
-  //     {
-  //       description: "Renew inspection",
-  //       completed: false,
-  //     },
-  //     {
-  //       description: "Pot plants",
-  //       completed: false,
-  //     },
-  //   ],
-  //   (error, result) => {
-  //     if (error) {
-  //       return console.log("Unable to insert tasks!");
-  //     }
+  db.collection("tasks").insertMany(
+    [
+      {
+        description: "Buy a course",
+        completed: true,
+      },
+      {
+        description: "Save for Land",
+        completed: false,
+      },
+      {
+        description: "Add Download for Academic Units",
+        completed: false,
+      },
+    ],
+    (error, result) => {
+      if (error) {
+        return console.log("Unable to insert tasks!");
+      }
 
-  //     console.log(result.insertedIds);
-  //   }
-  // );
+      console.log(result.insertedIds);
+    }
+  );
 
   //----------- READ -------------//
   // db.collection("users").findOne({ name: "Jolly" }, (error, response) => {
@@ -113,21 +115,21 @@ MongoClient.connect(connURL, (error, client) => {
   //   });
 
   /* ----------- DELETE ------------- */
-  db.collection("users")
-    .deleteOne({ name: "Mike" })
-    .then((response) => {
-      console.log("One Delete ====>", response);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  // db.collection("users")
+  //   .deleteOne({ name: "Mike" })
+  //   .then((response) => {
+  //     console.log("One Delete ====>", response);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
 
-  db.collection("users")
-    .deleteMany({ age: 12 })
-    .then((response) => {
-      console.log("Many Delete =====>", response);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  // db.collection("users")
+  //   .deleteMany({ age: 12 })
+  //   .then((response) => {
+  //     console.log("Many Delete =====>", response);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
 });
