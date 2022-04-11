@@ -1,8 +1,7 @@
 const mongoDB = require("mongodb");
 const { MongoClient, ObjectId } = mongoDB;
 
-const connURL =
-  "mongodb+srv://mongoAdmin:mongoAdmin@cluster0.baz2h.mongodb.net/task-manager?retryWrites=true&w=majority";
+const connURL = process.env.MONGO_BD_URL;
 const dbName = "task-manager";
 
 MongoClient.connect(connURL, (error, client) => {
