@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
-const connURL =
-  "mongodb+srv://mongoAdmin:mongoAdmin@cluster0.baz2h.mongodb.net/task-manager-test?retryWrites=true&w=majority";
+const connURL = process.env.MONGO_DB_URL;
 
 mongoose.connect(connURL, (error, client) => {
   if (error) console.log(error);
